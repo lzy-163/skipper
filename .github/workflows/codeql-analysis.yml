@@ -16,8 +16,6 @@ on:
     - cron: '0 11 * * 1'
 
 jobs:
-  if: ${{ github.actor != 'dependabot[bot]' }}
-
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
@@ -28,6 +26,8 @@ jobs:
       actions: read   # to be able to run codeql-actions
       security-events: write
       pull-requests: read
+
+    if: ${{ github.actor != 'dependabot[bot]' }}
 
     strategy:
       fail-fast: false
@@ -53,7 +53,7 @@ jobs:
         languages: ${{ matrix.language }}
         # If you wish to specify custom queries, you can do so here or in a config file.
         # By default, queries listed here will override any specified in a config file.
-        # Prefix the list here with "+" to use these queries and those in the config file.
+        # Prefix the list here with "+" to use these queries and those in a config file.
         # queries: ./path/to/local/query, your-org/your-repo/queries@main
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
@@ -61,10 +61,10 @@ jobs:
     - name: Autobuild
       uses: github/codeql-action/autobuild@9a866ed4524fc3422c3af1e446dab8efa3503411
 
-    # ℹ️ Command-line programs to run using the OS shell.
-    # 📚 https://git.io/JvXDl
+    # 鈩癸笍 Command-line programs to run using the OS shell.
+    # 馃摎 https://git.io/JvXDl
 
-    # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
+    # 鉁忥笍 If the Autobuild fails above, remove it and uncomment the following three lines
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
